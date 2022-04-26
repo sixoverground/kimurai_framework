@@ -301,14 +301,32 @@ module Kimurai
           spider = self.class.new(engine, config: @config.deep_merge_excl(config, DMERGE_EXCLUDE))
           spider.with_info = true if self.with_info
 
+          # How many URLs have been parsed
+          current_index = 0
+
+          # Total number of URLs
+          url_count = part.size
+
           part.each do |url_data|
+            current_index += 1
+
             if url_data.class == Hash
+              # Add info about the URLs to the data object
+              url_data[:data][:current_index] = current_index
+              url_data[:data][:thread_urls] = part
+              url_data[:data][:url_count] = url_count
+
               if url_data[:url].present? && url_data[:data].present?
                 spider.request_to(handler, delay, **url_data)
               else
                 spider.public_send(handler, **url_data)
               end
             else
+              # Add info about the URLs to the data object
+              url_data[:data][:current_index] = current_index
+              url_data[:data][:thread_urls] = part
+              url_data[:data][:url_count] = url_count
+
               spider.request_to(handler, delay, url: url_data, data: data)
             end
           end

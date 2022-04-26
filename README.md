@@ -7,9 +7,13 @@ Forked from https://github.com/vifreefly/kimuraframework. Please see kimuraframe
 ### Ruby 3+ support
 Ruby 3+ is supported with this version of Kimurai. Currently the original Kimurai does not support Ruby 3+ https://github.com/vifreefly/kimuraframework/issues/66.
 
-# Original documentation
+### More information when crawling in parallel
+Added the following variables, which are available in the `data` object of any thread when using the `in_parallel` method:
+- **current_index (Integer):** How many URLs have been parsed by the thread thus far.
+- **thread_urls (Array\<String>):** All URLs which will be parsed by the thread.
+- **url_count (Integer)**: Total number of URLs to be parsed by the thread.
 
-> UPD. I will soon have a time to work on issues for current 1.4 version and also plan to release new 2.0 version with https://github.com/twalpole/apparition engine.
+# Original documentation (at time of fork)
 
 > UPD. I will soon have a time to work on issues for current 1.4 version and also plan to release new 2.0 version with https://github.com/twalpole/apparition engine.
 
