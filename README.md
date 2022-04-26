@@ -9,9 +9,9 @@ Ruby 3+ is supported with this version of Kimurai. Currently the original Kimura
 
 ### More information when crawling in parallel
 Added the following variables, which are available in the `data` object of any thread when using the `in_parallel` method:
-- **current_index (Integer):** How many URLs have been parsed by the thread thus far.
-- **thread_urls (Array\<String>):** All URLs which will be parsed by the thread.
-- **url_count (Integer)**: Total number of URLs to be parsed by the thread.
+- **current_index** (Integer): How many URLs have been parsed by the thread thus far.
+- **thread_urls (Array**\<String>): All URLs which will be parsed by the thread.
+- **url_count** (Integer): Total number of URLs to be parsed by the thread.
 
 # Original documentation (at time of fork)
 
