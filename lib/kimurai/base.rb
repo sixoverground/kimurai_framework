@@ -323,9 +323,9 @@ module Kimurai
               end
             else
               # Add info about the URLs to the data object
-              url_data[:data][:current_index] = current_index
-              url_data[:data][:thread_urls] = part
-              url_data[:data][:url_count] = url_count
+              data[:current_index] = current_index
+              data[:thread_urls] = part
+              data[:url_count] = url_count
 
               spider.request_to(handler, delay, url: url_data, data: data)
             end
