@@ -24,6 +24,9 @@ module Kimurai::BrowserBuilder
         # Create driver options
         opts = { args: %w[--disable-gpu --no-sandbox --disable-translate] }
 
+        # Provide configuratble driver options
+        opts[:args] += @config[:args] if @config[:args].present?
+        
         # Provide custom chrome browser path:
         if chrome_path = Kimurai.configuration.selenium_chrome_path
           opts.merge!(binary: chrome_path)
