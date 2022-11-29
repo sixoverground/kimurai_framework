@@ -26,7 +26,7 @@ module Kimurai::BrowserBuilder
 
         # Provide configuratble driver options
         opts[:args] += @config[:args] if @config[:args].present?
-        
+
         # Provide custom chrome browser path:
         if chrome_path = Kimurai.configuration.selenium_chrome_path
           opts.merge!(binary: chrome_path)
@@ -51,7 +51,9 @@ module Kimurai::BrowserBuilder
               driver_options.args << "--proxy-server=#{type}://#{ip}:#{port}"
               logger.debug "BrowserBuilder (selenium_chrome): enabled #{type} proxy, ip: #{ip}, port: #{port}"
             else
-              logger.error "BrowserBuilder (selenium_chrome): proxy with authentication doesn't supported by selenium, skipped"
+              driver_options.args << "--proxy-server=#{type}://#{user}:#{password}@#{ip}:#{port}"
+              logger.debug "BrowserBuilder (selenium_chrome): enabled #{type} proxy, ip: #{ip}, port: #{port}, user: #{user}"
+              # logger.error "BrowserBuilder (selenium_chrome): proxy with authentication doesn't supported by selenium, skipped"
             end
           else
             logger.error "BrowserBuilder (selenium_chrome): wrong type of proxy: #{type}, skipped"
