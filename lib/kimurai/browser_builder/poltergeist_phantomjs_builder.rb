@@ -22,6 +22,10 @@ module Kimurai::BrowserBuilder
           js_errors: false, debug: false, inspector: false, phantomjs_options: []
         }
 
+        # Allow configuration to override driver options
+        driver_options[:js_errors] = @config[:js_errors] if @config[:js_errors].present?
+        driver_options[:debug] = @config[:debug] if @config[:debug].present?
+
         if extensions = @config[:extensions].presence
           driver_options[:extensions] = extensions
           logger.debug "BrowserBuilder (poltergeist_phantomjs): enabled extensions"
