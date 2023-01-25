@@ -25,6 +25,7 @@ module Kimurai::BrowserBuilder
         # Allow configuration to override driver options
         driver_options[:js_errors] = @config[:js_errors] if @config[:js_errors].present?
         driver_options[:debug] = @config[:debug] if @config[:debug].present?
+        driver_options[:inspector] = @config[:inspector] if @config[:inspector].present?
 
         if extensions = @config[:extensions].presence
           driver_options[:extensions] = extensions
