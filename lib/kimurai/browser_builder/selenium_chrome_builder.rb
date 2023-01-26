@@ -22,10 +22,12 @@ module Kimurai::BrowserBuilder
       # Register driver
       Capybara.register_driver :selenium_chrome do |app|
         # Create driver options
-        opts = { args: %w[--disable-gpu --no-sandbox --disable-translate] }
+        opts = { args: %w[--no-sandbox --disable-gpu --disable-translate] }
 
         # Provide configuratble driver options
         opts[:args] += @config[:args] if @config[:args].present?
+
+        puts "running selenium chrome with args: #{opts[:args]}"
         
         # Provide custom chrome browser path:
         if chrome_path = Kimurai.configuration.selenium_chrome_path
